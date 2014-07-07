@@ -1,6 +1,6 @@
 ##############################################################################################################
 #                       #   Parachat logging software AKA: "R3D3Y3"                                          #
-#  \                 /  #   Version 1.0.b                                                                    #
+#  \                 /  #   Version 1.1.a                                                                    #
 #   \      ( )      /   #   June 13, 2014                                                                    #
 #    \             /    #   Author: William J. Appleton (Mephistopheles)                                     #
 #     \           /     ######################################################################################
@@ -64,7 +64,7 @@ def MESSAGE_HANDLER(Messages):
 	try:
 		Messages_Divided = re.sub('" >', '\n', Messages_Unformatted.group())
 		Messages_ChatOnly = re.sub("(.*)javascript:paraShowOne(.*)", "\n", Messages_Divided) 
-		Messages_Formatted = str(re.sub("&amp;quot;", "\"", str(re.sub("&amp;gt;", "&", str(re.sub("<(.*?)>", "", str(re.sub('\n', '', str(re.sub('</a>: ',": ", str(re.sub("']", "", str(re.sub("', u'(.*)", "", Messages_ChatOnly)))))))))))))).decode('string_escape')
+		Messages_Formatted = str(re.sub("&amp;quot;", "\"", str(re.sub("&amp;amp;", "&", str(re.sub("&amp;lt;", "<", str(re.sub("&amp;gt;", ">", str(re.sub("<(.*?)>", "", str(re.sub('\n', '', str(re.sub('</a>: ',": ", str(re.sub("']", "", str(re.sub("', u'(.*)", "", Messages_ChatOnly)))))))))))))))))).decode('string_escape')
 		Messages_LogEntry = str(datetime.datetime.now().date()) + "~" + str(datetime.datetime.now().time()) + ">> " + str(Messages_Formatted) + "\n"
 		try:
 			ChatLogFile = open('ParachatLog.txt', 'a')
